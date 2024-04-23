@@ -179,12 +179,11 @@ class _PagedLayoutBuilderState<PageKeyType, ItemType>
                   // value. That way, we are safe if [itemList] value changes
                   // while Flutter rebuilds the widget (due to animations, for
                   // example.)
-                  // (context, index) => _buildListItemWidget(
-                  //   context,
-                  //   index,
-                  //   itemList!,
-                  // ),
-                  (context, index) => const SizedBox.shrink(),
+                  (context, index) => _buildListItemWidget(
+                    context,
+                    index,
+                    itemList!,
+                  ),
                   _itemCount,
                   _newPageProgressIndicatorBuilder,
                 );
