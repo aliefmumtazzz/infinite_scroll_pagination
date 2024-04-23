@@ -171,7 +171,7 @@ class _PagedLayoutBuilderState<PageKeyType, ItemType>
           builder: (context, pagingState, _) {
             Widget child;
             final itemList = _pagingController.itemList;
-            debugPrint('exec ----- $pagingState');
+            debugPrint('exec ----- ${pagingState.status}');
             switch (pagingState.status) {
               case PagingStatus.ongoing:
                 child = widget.loadingListingBuilder(
