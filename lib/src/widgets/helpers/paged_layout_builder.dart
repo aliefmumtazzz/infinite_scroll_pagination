@@ -129,7 +129,7 @@ class _PagedLayoutBuilderState<PageKeyType, ItemType>
 
   WidgetBuilder get _newPageProgressIndicatorBuilder =>
       _builderDelegate.newPageProgressIndicatorBuilder ??
-      (_) => const NewPageProgressIndicator();
+      (_) => const SizedBox.shrink();
 
   WidgetBuilder get _noItemsFoundIndicatorBuilder =>
       _builderDelegate.noItemsFoundIndicatorBuilder ??
