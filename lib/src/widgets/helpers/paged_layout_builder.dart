@@ -173,21 +173,21 @@ class _PagedLayoutBuilderState<PageKeyType, ItemType>
             final itemList = _pagingController.itemList;
             switch (pagingState.status) {
               case PagingStatus.ongoing:
-                child = const SizedBox.shrink();
-                // child = widget.loadingListingBuilder(
-                //   context,
-                //   // We must create this closure to close over the [itemList]
-                //   // value. That way, we are safe if [itemList] value changes
-                //   // while Flutter rebuilds the widget (due to animations, for
-                //   // example.)
-                //   (context, index) => _buildListItemWidget(
-                //     context,
-                //     index,
-                //     itemList!,
-                //   ),
-                //   _itemCount,
-                //   _newPageProgressIndicatorBuilder,
-                // );
+                child = widget.loadingListingBuilder(
+                  context,
+                  // We must create this closure to close over the [itemList]
+                  // value. That way, we are safe if [itemList] value changes
+                  // while Flutter rebuilds the widget (due to animations, for
+                  // example.)
+                  // (context, index) => _buildListItemWidget(
+                  //   context,
+                  //   index,
+                  //   itemList!,
+                  // ),
+                  (context, index) => const SizedBox.shrink(),
+                  _itemCount,
+                  _newPageProgressIndicatorBuilder,
+                );
                 break;
               case PagingStatus.completed:
                 child = widget.completedListingBuilder(
@@ -202,12 +202,11 @@ class _PagedLayoutBuilderState<PageKeyType, ItemType>
                 );
                 break;
               case PagingStatus.loadingFirstPage:
-                child = const SizedBox.shrink();
-                // child = _FirstPageStatusIndicatorBuilder(
-                //   builder: _firstPageProgressIndicatorBuilder,
-                //   shrinkWrap: _shrinkWrapFirstPageIndicators,
-                //   layoutProtocol: _layoutProtocol,
-                // );
+                child = _FirstPageStatusIndicatorBuilder(
+                  builder: _firstPageProgressIndicatorBuilder,
+                  shrinkWrap: _shrinkWrapFirstPageIndicators,
+                  layoutProtocol: _layoutProtocol,
+                );
                 break;
               case PagingStatus.subsequentPageError:
                 child = widget.errorListingBuilder(
